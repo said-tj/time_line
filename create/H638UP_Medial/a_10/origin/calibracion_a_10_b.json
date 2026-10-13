@@ -1,0 +1,57 @@
+{
+  "imagen": "H638UP_Medial/a_10/origin/a_10_b.png",
+  "tamano_px": [
+    1271,
+    232
+  ],
+  "bordes_horizontales": [
+    0,
+    28,
+    128,
+    229
+  ],
+  "panel_presion": [
+    128,
+    229
+  ],
+  "cmH2O_por_px": 2.9702970297029703,
+  "x_separador_rotulos": 1186,
+  "columnas_utiles": [
+    2,
+    1185
+  ],
+  "regla_fila": 28,
+  "regla_marcas": 179,
+  "regla_marcas_descartadas": 0,
+  "regla_marcas_mayores": 38,
+  "px_por_seg": 6.62042211173647,
+  "regla_rms_px": 0.2699810573250693,
+  "regla_residuo_max_px": 0.47651986635491994,
+  "regla_coherencia_mayores": 0.9473684210526315,
+  "x_marca_referencia": 19.01810769833611,
+  "t_ref_s": 450.0,
+  "t_inicio_s": 447.4294527733863,
+  "t_fin_s": 626.1189653201491,
+  "muestras": 1183,
+  "muestras_piso": 456,
+  "muestras_techo": 0,
+  "pura_final": 4.763683915561388,
+  "pura_max_valida": 106.93069306930693,
+  "pura_pantalla": 0.0,
+  "dif_final_vs_pantalla": 4.763683915561388,
+  "cursores_s": [
+    516.16,
+    537.6,
+    619.17
+  ],
+  "bandas_s": [
+    [
+      516.46,
+      537.3
+    ],
+    [
+      537.76,
+      618.87
+    ]
+  ]
+}

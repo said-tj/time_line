@@ -1,0 +1,47 @@
+{
+  "imagen": "H638UP_Proximal/a_03/origin/a_03_b.png",
+  "tamano_px": [
+    1270,
+    230
+  ],
+  "bordes_horizontales": [
+    0,
+    27,
+    128,
+    228
+  ],
+  "panel_presion": [
+    128,
+    228
+  ],
+  "cmH2O_por_px": 3.0,
+  "x_separador_rotulos": 1184,
+  "columnas_utiles": [
+    858,
+    1183
+  ],
+  "regla_fila": 27,
+  "regla_marcas": 50,
+  "regla_marcas_descartadas": 0,
+  "regla_marcas_mayores": 10,
+  "px_por_seg": 6.6009603841536615,
+  "regla_rms_px": 0.28250296134601144,
+  "regla_residuo_max_px": 0.4216086434578301,
+  "regla_coherencia_mayores": 1.0,
+  "x_marca_referencia": 858.1764705882357,
+  "t_ref_s": 0.0,
+  "t_inicio_s": -0.026734077765311136,
+  "t_fin_s": 49.208525806568886,
+  "muestras": 326,
+  "muestras_piso": 0,
+  "muestras_techo": 0,
+  "pura_final": 66.67444717444718,
+  "pura_max_valida": 153.0,
+  "pura_pantalla": 61.0,
+  "dif_final_vs_pantalla": 5.674447174447181,
+  "cursores_s": [
+    0.5,
+    48.45
+  ],
+  "bandas_s": []
+}

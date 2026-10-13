@@ -1,0 +1,17 @@
+sujeto,condicion,orden_condicion,captura,imagen,rotulo_ref,t_ref_s,pura_pantalla,pura_max_pantalla,notas
+H638UP,Basal,1,a_00,H638UP_Basal/a_00/origin/a_00_b.png,0,0,126,134,
+H638UP,Basal,1,a_01,H638UP_Basal/a_01/origin/a_01_b.png,2:15,135,92,134,
+H638UP,Basal,1,a_02,H638UP_Basal/a_02/origin/a_02_b.png,3:45,225,0,134,
+H638UP,Proximal,2,a_03,H638UP_Proximal/a_03/origin/a_03_b.png,0,0,61,234,registro inicia a mitad de pantalla; a la izquierda solo hay relleno del equipo
+H638UP,Proximal,2,a_04,H638UP_Proximal/a_04/origin/a_04_b.png,50,50,159,234,
+H638UP,Proximal,2,a_05,H638UP_Proximal/a_05/origin/a_05_b.png,3:45,225,-13,234,valor en pantalla negativo: trazo en el piso del panel
+H638UP,Proximal,2,a_06,H638UP_Proximal/a_06/origin/a_06_b.png,6:35,395,0,234,
+H638UP,Medial,3,a_07,H638UP_Medial/a_07/origin/a_07_b.png,0,0,64,132,
+H638UP,Medial,3,a_08,H638UP_Medial/a_08/origin/a_08_b.png,2:50,170,64,132,
+H638UP,Medial,3,a_09,H638UP_Medial/a_09/origin/a_09_b.png,5:45,345,49,132,
+H638UP,Medial,3,a_10,H638UP_Medial/a_10/origin/a_10_b.png,7:30,450,0,132,
+H638UP,Distal,4,a_11,H638UP_Distal/a_11/origin/a_11_b.png,0,0,49,348,
+H638UP,Distal,4,a_12,H638UP_Distal/a_12/origin/a_12_b.png,2:55,175,81,348,
+H638UP,Distal,4,a_13,H638UP_Distal/a_13/origin/a_13_b.png,5:20,320,73,348,
+H638UP,Distal,4,a_14,H638UP_Distal/a_14/origin/a_14_b.png,8:10,490,85,348,trazo saturado en 300 cm H2O (techo) cerca de 10:45
+H638UP,Distal,4,a_15,H638UP_Distal/a_15/origin/a_15_b.png,10:20,620,0,348,trazo saturado en 300 cm H2O (techo) cerca de 10:45

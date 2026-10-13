@@ -1,0 +1,67 @@
+{
+  "imagen": "H638UP_Medial/a_09/origin/a_09_b.png",
+  "tamano_px": [
+    1269,
+    230
+  ],
+  "bordes_horizontales": [
+    0,
+    27,
+    127,
+    228
+  ],
+  "panel_presion": [
+    127,
+    228
+  ],
+  "cmH2O_por_px": 2.9702970297029703,
+  "x_separador_rotulos": 1185,
+  "columnas_utiles": [
+    1,
+    1184
+  ],
+  "regla_fila": 27,
+  "regla_marcas": 178,
+  "regla_marcas_descartadas": 0,
+  "regla_marcas_mayores": 38,
+  "px_por_seg": 6.620419757401049,
+  "regla_rms_px": 0.2796529731045219,
+  "regla_residuo_max_px": 0.9730912976471018,
+  "regla_coherencia_mayores": 0.9210526315789473,
+  "x_marca_referencia": 35.90981604833673,
+  "t_ref_s": 345.0,
+  "t_inicio_s": 339.7269482408105,
+  "t_fin_s": 518.416524332645,
+  "muestras": 1182,
+  "muestras_piso": 443,
+  "muestras_techo": 0,
+  "pura_final": 53.929455445544555,
+  "pura_max_valida": 83.16831683168317,
+  "pura_pantalla": 49.0,
+  "dif_final_vs_pantalla": 4.929455445544555,
+  "cursores_s": [
+    340.94,
+    352.57,
+    409.21,
+    443.95,
+    516.15
+  ],
+  "bandas_s": [
+    [
+      341.09,
+      352.26
+    ],
+    [
+      352.72,
+      409.06
+    ],
+    [
+      409.51,
+      443.65
+    ],
+    [
+      516.3,
+      518.42
+    ]
+  ]
+}

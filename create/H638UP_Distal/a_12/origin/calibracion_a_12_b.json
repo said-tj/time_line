@@ -1,0 +1,51 @@
+{
+  "imagen": "H638UP_Distal/a_12/origin/a_12_b.png",
+  "tamano_px": [
+    1272,
+    231
+  ],
+  "bordes_horizontales": [
+    0,
+    27,
+    127,
+    228
+  ],
+  "panel_presion": [
+    127,
+    228
+  ],
+  "cmH2O_por_px": 2.9702970297029703,
+  "x_separador_rotulos": 1186,
+  "columnas_utiles": [
+    2,
+    1185
+  ],
+  "regla_fila": 27,
+  "regla_marcas": 178,
+  "regla_marcas_descartadas": 0,
+  "regla_marcas_mayores": 37,
+  "px_por_seg": 6.620339665730811,
+  "regla_rms_px": 0.27023940883115616,
+  "regla_residuo_max_px": 0.47322201194623403,
+  "regla_coherencia_mayores": 0.972972972972973,
+  "x_marca_referencia": 40.204699715550994,
+  "t_ref_s": 175.0,
+  "t_inicio_s": 169.22919341838127,
+  "t_fin_s": 347.9209312643442,
+  "muestras": 1184,
+  "muestras_piso": 447,
+  "muestras_techo": 0,
+  "pura_final": 78.24257425742576,
+  "pura_max_valida": 142.5742574257426,
+  "pura_pantalla": 81.0,
+  "dif_final_vs_pantalla": -2.7574257425742417,
+  "cursores_s": [
+    331.0
+  ],
+  "bandas_s": [
+    [
+      331.15,
+      347.92
+    ]
+  ]
+}
