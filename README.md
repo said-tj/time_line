@@ -15,6 +15,7 @@ time_line/
 │   ├── extraer_pura.py          digitaliza una captura (única copia del script)
 │   ├── procesar_sesiones.py     procesa todo el manifiesto y une las sesiones
 │   └── generar_web.py           arma la base de datos del sitio (web/datos.js)
+├── index.html                   redirección a web/ para GitHub Pages
 ├── web/                         sitio para consultar los resultados
 │   ├── index.html               se abre con doble clic, sin servidor
 │   ├── estilos.css
@@ -94,6 +95,16 @@ servir la carpeta del proyecto:
 ```bash
 python3 -m http.server 8000     # y abrir http://localhost:8000/web/
 ```
+
+El sitio también está publicado con GitHub Pages desde la raíz de `main`:
+
+**<https://said-tj.github.io/time_line/>**
+
+La raíz tiene que ser la carpeta publicada porque `web/` lee las imágenes y los
+CSV de `create/`; `index.html` de la raíz sólo redirige a `web/` y `.nojekyll`
+evita que GitHub procese el repositorio con Jekyll. Cada `git push` a `main`
+vuelve a publicar la página, así que después de reprocesar hay que acordarse de
+correr `generar_web.py` y subir `web/datos.js`.
 
 ## Columnas de los CSV
 
