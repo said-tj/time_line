@@ -13,7 +13,13 @@ time_line/
 ├── Escrito/                     tesis (docx, pdf)
 ├── scripts/
 │   ├── extraer_pura.py          digitaliza una captura (única copia del script)
-│   └── procesar_sesiones.py     procesa todo el manifiesto y une las sesiones
+│   ├── procesar_sesiones.py     procesa todo el manifiesto y une las sesiones
+│   └── generar_web.py           arma la base de datos del sitio (web/datos.js)
+├── web/                         sitio para consultar los resultados
+│   ├── index.html               se abre con doble clic, sin servidor
+│   ├── estilos.css
+│   ├── app.js
+│   └── datos.js                 generado; no editar a mano
 ├── create/
 │   ├── manifiesto.csv           capturas, orden, rótulo de tiempo y valores en pantalla
 │   ├── resumen_capturas.csv     calibración y validación de cada captura
@@ -40,7 +46,11 @@ Basal `a_00–a_02`, Proximal `a_03–a_06`, Medial `a_07–a_10`, Distal `a_11�
 conda env create -f environment.yml      # una sola vez
 conda activate analisis_presion
 python scripts/procesar_sesiones.py      # regenera todos los resultados
+python3 scripts/generar_web.py           # actualiza el sitio con esos resultados
 ```
+
+`generar_web.py` sólo usa la biblioteca estándar, así que puede ejecutarse sin
+activar el entorno.
 
 Una sola captura:
 
@@ -54,6 +64,36 @@ fila al manifiesto con el rótulo de la **primera marca mayor visible** de la
 regla (la que queda marcada en el PNG de verificación) en `rotulo_ref` y su
 valor en segundos en `t_ref_s`, y el valor de Pura que muestra el equipo en
 `pura_pantalla`.
+
+## Sitio de resultados
+
+`web/index.html` reúne todo lo que hay en `create/` en una sola página; se abre
+con doble clic (no necesita servidor ni conexión) y tiene cinco secciones:
+
+* **Resumen** — totales del sujeto, una tarjeta por sesión con la serie completa
+  en miniatura y una tabla comparativa entre condiciones (media, mediana, DE,
+  máximo y su instante, integral, porcentaje de muestras censuradas).
+* **Curvas** — las cuatro series unidas superpuestas, con acercamiento con la
+  rueda, desplazamiento arrastrando, valores al pasar el ratón, envolvente
+  mín–máx, censura, límites de cada captura y cursores del equipo. El rango que
+  se está viendo se descarga como CSV.
+* **Capturas** — una fila por captura, con búsqueda, filtro por condición y
+  orden por cualquier columna; al pulsar una fila se abren sus tres imágenes y
+  toda su calibración, y se puede saltar a ese tramo en la gráfica.
+* **Validación** — reconstruido frente a pantalla, concordancia entre capturas
+  consecutivas y calibración de cada captura.
+* **Guía** — diccionario de columnas y significado de cada estado.
+
+El sitio no tiene nada escrito a mano: sale de `create/manifiesto.csv`, de los
+dos resúmenes y de las series unidas, de modo que al agregar un sujeto o una
+captura basta con volver a correr `generar_web.py`.
+
+Si el navegador bloquea las imágenes al abrir el archivo directamente, se puede
+servir la carpeta del proyecto:
+
+```bash
+python3 -m http.server 8000     # y abrir http://localhost:8000/web/
+```
 
 ## Columnas de los CSV
 

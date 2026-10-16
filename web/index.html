@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Presión uretral · H638UP</title>
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+<header class="sitio">
+  <div class="envoltura">
+    <div class="cabecera">
+      <div>
+        <h1 id="titulo">Presión uretral (Pura)</h1>
+        <p id="subtitulo"></p>
+      </div>
+      <div class="acciones">
+        <button class="boton" id="btn-tema" title="Cambiar entre claro y oscuro">Tema</button>
+      </div>
+    </div>
+    <nav class="pestanas" role="tablist">
+      <button role="tab" data-vista="resumen" aria-selected="true">Resumen</button>
+      <button role="tab" data-vista="curvas" aria-selected="false">Curvas</button>
+      <button role="tab" data-vista="capturas" aria-selected="false">Capturas</button>
+      <button role="tab" data-vista="validacion" aria-selected="false">Validación</button>
+      <button role="tab" data-vista="guia" aria-selected="false">Guía</button>
+    </nav>
+  </div>
+</header>
+
+<main class="envoltura">
+
+  <!-- ============ RESUMEN ============ -->
+  <section class="vista activa" id="vista-resumen">
+    <div class="rejilla k4" id="kpis"></div>
+
+    <div class="tarjeta" style="margin-top:18px">
+      <h2>Sesiones del sujeto</h2>
+      <p class="nota">Orden cronológico del registro. La miniatura muestra la serie unida completa
+        de cada sesión; los tramos sombreados son muestras censuradas (piso o techo del panel).
+        Pulsa una sesión para verla en la gráfica.</p>
+      <div class="rejilla k4" id="sesiones"></div>
+    </div>
+
+    <div class="tarjeta">
+      <h2>Comparación entre condiciones</h2>
+      <p class="nota">Descriptores calculados sobre las muestras válidas de cada serie unida
+        (se excluyen las censuradas); el máximo y la integral usan la serie completa.</p>
+      <div class="controles">
+        <label class="alternar">Medida
+          <select class="buscador" id="sel-medida">
+            <option value="pura_media">Media (cm H₂O)</option>
+            <option value="pura_mediana">Mediana (cm H₂O)</option>
+            <option value="pura_max">Máximo (cm H₂O)</option>
+            <option value="pura_p95">Percentil 95 (cm H₂O)</option>
+            <option value="pura_de">Desviación estándar (cm H₂O)</option>
+            <option value="auc">Integral (cm H₂O·s)</option>
+            <option value="duracion_s">Duración (s)</option>
+            <option value="pct_piso">Muestras en el piso (%)</option>
+          </select>
+        </label>
+      </div>
+      <div class="tabla-caja">
+        <table class="datos" id="tabla-comparacion"></table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CURVAS ============ -->
+  <section class="vista" id="vista-curvas">
+    <div class="tarjeta">
+      <h2>Series unidas (paso 0.1 s)</h2>
+      <p class="nota">Rueda del ratón para acercar, arrastrar para desplazar, doble clic para volver
+        al registro completo. El tiempo es el del equipo; cada sesión empieza en 0.</p>
+
+      <div class="controles" id="chips-series"></div>
+      <div class="controles">
+        <label class="alternar"><input type="checkbox" id="chk-envolvente" checked> Envolvente mín–máx</label>
+        <label class="alternar"><input type="checkbox" id="chk-censura" checked> Sombrear censura</label>
+        <label class="alternar"><input type="checkbox" id="chk-limites"> Límites de captura</label>
+        <label class="alternar"><input type="checkbox" id="chk-cursores"> Cursores del equipo</label>
+        <span class="sep"></span>
+        <button class="boton" id="btn-reset">Ver todo</button>
+        <button class="boton" id="btn-exportar">Descargar rango visible (CSV)</button>
+        <span class="nota" id="info-rango" style="margin:0 0 0 auto"></span>
+      </div>
+
+      <div class="lienzo" id="lienzo">
+        <canvas id="grafica" height="420"></canvas>
+        <div class="globo" id="globo"></div>
+      </div>
+
+      <div class="leyenda-cen">
+        <span><i style="background:var(--piso)"></i>piso del panel (≤ ~5 cm H₂O)</span>
+        <span><i style="background:var(--techo)"></i>techo del panel (saturado en 300 cm H₂O)</span>
+        <span><i style="background:var(--borde)"></i>envolvente mín–máx del trazo</span>
+        <span>Con varias sesiones a la vez, la censura se dibuja en un carril por sesión
+          bajo el eje; con una sola, a toda altura.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CAPTURAS ============ -->
+  <section class="vista" id="vista-capturas">
+    <div class="tarjeta">
+      <h2>Capturas digitalizadas</h2>
+      <p class="nota">Una fila por captura de pantalla. Pulsa una fila para ver sus imágenes y su
+        calibración. Las cabeceras ordenan la tabla.</p>
+      <div class="controles">
+        <input class="buscador" id="busca-captura" placeholder="Buscar captura, condición, nota…">
+        <span class="sep"></span>
+        <div id="filtros-cond" class="controles" style="margin:0;gap:6px"></div>
+        <span class="nota" id="conteo-capturas" style="margin:0 0 0 auto"></span>
+      </div>
+      <div class="tabla-caja">
+        <table class="datos" id="tabla-capturas"></table>
+      </div>
+    </div>
+    <div class="tarjeta" id="detalle-captura"></div>
+  </section>
+
+  <!-- ============ VALIDACIÓN ============ -->
+  <section class="vista" id="vista-validacion">
+    <div class="tarjeta">
+      <h2>Reconstrucción frente a la pantalla</h2>
+      <p class="nota">Diferencia entre el valor final reconstruido y el que muestra el equipo.
+        La tolerancia es de 3 cm H₂O, que es ≈ 1 px del panel de 0–300.</p>
+      <div class="tabla-caja">
+        <table class="datos" id="tabla-pantalla"></table>
+      </div>
+    </div>
+
+    <div class="tarjeta">
+      <h2>Concordancia entre capturas consecutivas</h2>
+      <p class="nota">Las capturas de una sesión se traslapan: en el intervalo común se compara la
+        presión reconstruida por cada una. El desfase es el retardo que maximiza la correlación.</p>
+      <div class="tabla-caja">
+        <table class="datos" id="tabla-solapes"></table>
+      </div>
+    </div>
+
+    <div class="tarjeta">
+      <h2>Calibración por captura</h2>
+      <p class="nota">Escala del panel, escala temporal y ajuste de la regla.</p>
+      <div class="tabla-caja">
+        <table class="datos" id="tabla-calib"></table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GUÍA ============ -->
+  <section class="vista" id="vista-guia">
+    <div class="tarjeta">
+      <h2>Cómo leer esta base de datos</h2>
+      <p class="nota">
+        Cada sesión (condición) se registró como una secuencia de capturas de pantalla del equipo
+        Goby. Cada captura se digitaliza por separado, se calibra con la regla de tiempo y con los
+        bordes del panel de presión, y después las capturas de una misma sesión se unen en una sola
+        serie a paso de 0.1 s, promediando los tramos en que se traslapan.
+      </p>
+      <div class="rejilla k2">
+        <div>
+          <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--texto-2);margin:0 0 8px">Columnas de los CSV</h4>
+          <div class="tabla-caja" style="margin:0"><table class="datos" id="tabla-diccionario"></table></div>
+        </div>
+        <div>
+          <h4 style="font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--texto-2);margin:0 0 8px">Estado de validación</h4>
+          <div class="tabla-caja" style="margin:0"><table class="datos" id="tabla-estados"></table></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tarjeta">
+      <h2>Regenerar el sitio</h2>
+      <p class="nota">Tras reprocesar las capturas, la página se actualiza volviendo a escribir
+        <code>web/datos.js</code>:</p>
+      <p class="nota" style="font-family:ui-monospace,monospace">
+        python3 scripts/procesar_sesiones.py<br>
+        python3 scripts/generar_web.py
+      </p>
+      <p class="nota">Para añadir un sujeto o una captura basta con agregar su fila a
+        <code>create/manifiesto.csv</code>: el sitio toma de ahí las condiciones, las capturas y las
+        notas, de modo que no hay nada que editar a mano en el HTML.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="sitio">
+  <div class="envoltura" id="pie"></div>
+</footer>
+
+<div class="visor" id="visor"><img alt=""></div>
+
+<script src="datos.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
